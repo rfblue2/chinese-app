@@ -1,0 +1,35 @@
+.ModuleList {
+  #list-header {
+    margin-bottom: 0;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    padding: 15px;
+    overflow: hidden;
+    background-color: #dddddd;
+    border: 1px solid #cccccc;
+    -webkit-border-radius: 10px 10px 0 0;
+    border-radius: 10px 10px 0 0;
+    color: rgba(28,0,0,1);
+    -webkit-box-shadow: 1px 0px 1px 0 rgba(0,0,0,0.3);
+    box-shadow: 1px 0px 1px 0 rgba(0,0,0,0.3);
+  }
+
+  #list-body {
+    margin-top: 0;
+    list-style-type: none;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    padding: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(244,244,244,1);
+    -webkit-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+    color: rgba(28,0,0,1);
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3);
+    box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3);
+  }
+}
