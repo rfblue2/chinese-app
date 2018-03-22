@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
@@ -8,7 +9,7 @@ import Card, { CardContent } from 'material-ui/Card';
 class ModuleItem extends Component {
   state={ redirect: false };
 
-  handleClick(id) {
+  handleClick() {
     this.setState({ redirect: true });
   }
 
@@ -20,10 +21,10 @@ class ModuleItem extends Component {
     }
     return (
       <GridListTile
-        onClick={ () => this.handleClick(id) }
-        className={ classes.tile }
+        onClick={() => this.handleClick(id)}
+        className={classes.tile}
       >
-        <Card 
+        <Card
           className={classes.card}
         >
           <CardContent>
@@ -37,22 +38,30 @@ class ModuleItem extends Component {
   }
 }
 
+ModuleItem.propTypes = {
+  module: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+  classes: PropTypes.object.isRequired,
+};
+
 const styles = {
   card: {
-    margin: "5px",
-    transition: "all 0.5s ease",
+    margin: '5px',
+    transition: 'all 0.5s ease',
     '&:hover': {
-      backgroundColor: "#dddddd",
-      cursor: "pointer",
+      backgroundColor: '#dddddd',
+      cursor: 'pointer',
     },
     '&:active': {
-      backgroundColor: "#aaaaaa",
-      transition: "none",
+      backgroundColor: '#aaaaaa',
+      transition: 'none',
     },
   },
   tile: {
-    width: "50%",
-    padding: "10px",
+    width: '50%',
+    padding: '10px',
   },
 };
 

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import ModuleItem from './ModuleItem';
+import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import GridList, { GridListTile } from 'material-ui/GridList';
 import Subheader from 'material-ui/List/ListSubheader';
+import ModuleItem from './ModuleItem';
 
 class ModuleList extends Component {
   state = { modules: [] }
@@ -36,10 +37,11 @@ class ModuleList extends Component {
           cellHeight={80}
         >
           <GridListTile key="subheader" cols={2} style={{ height: 'auto' }}>
-            <Subheader 
+            <Subheader
               className={classes.subheader}
               component="div"
-            >Assigned Modules</Subheader>
+            >Assigned Modules
+            </Subheader>
           </GridListTile>
           { this.state.modules.map(module =>
             <ModuleItem key={module.id} module={module} />) }
@@ -49,16 +51,20 @@ class ModuleList extends Component {
   }
 }
 
+ModuleList.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
 const styles = theme => ({
   root: {
-    margin: "10px 50px 0 50px",
+    margin: '10px 50px 0 50px',
     display: 'flex',
     flexWrap: 'wrap',
     overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
   },
   gridList: {
-    width: "100%",
+    width: '100%',
     margin: '10px',
   },
   subheader: {

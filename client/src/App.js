@@ -19,7 +19,7 @@ class App extends Component {
           light: '#ff7961',
           main: '#f44336',
           dark: '#ba000d',
-          contrastText: '#000',
+          contrastText: '#fff',
         },
         secondary: {
           light: '#757ce8',
