@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ModuleItem from './ModuleItem';
-import './ModuleList.css';
+import { withStyles } from 'material-ui/styles';
+import GridList, { GridListTile } from 'material-ui/GridList';
+import Subheader from 'material-ui/List/ListSubheader';
 
 class ModuleList extends Component {
   state = { modules: [] }
@@ -11,27 +13,57 @@ class ModuleList extends Component {
       modules: [
         {
           id: 1,
-          name: "Module 1",
+          name: 'Module 1 (第一部分)',
         },
         {
           id: 2,
-          name: "Module 2"
-        }
-      ]
+          name: 'Module 2',
+        },
+        {
+          id: 3,
+          name: 'Module 3',
+        },
+      ],
     });
   }
 
   render() {
+    const { classes } = this.props;
     return (
-      <div className="ModuleList">
-        <h2 id="list-header">Assigned Modules</h2>
-        <ul id="list-body">
-          { this.state.modules.map(module => 
+      <div className={classes.root}>
+        <GridList
+          className={classes.gridList}
+          cellHeight={80}
+        >
+          <GridListTile key="subheader" cols={2} style={{ height: 'auto' }}>
+            <Subheader 
+              className={classes.subheader}
+              component="div"
+            >Assigned Modules</Subheader>
+          </GridListTile>
+          { this.state.modules.map(module =>
             <ModuleItem key={module.id} module={module} />) }
-        </ul>
+        </GridList>
       </div>
     );
   }
 }
 
-export default ModuleList;
+const styles = theme => ({
+  root: {
+    margin: "10px 50px 0 50px",
+    display: 'flex',
+    flexWrap: 'wrap',
+    overflow: 'hidden',
+    backgroundColor: theme.palette.background.paper,
+  },
+  gridList: {
+    width: "100%",
+    margin: '10px',
+  },
+  subheader: {
+    width: '100%',
+  },
+});
+
+export default withStyles(styles)(ModuleList);
