@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-
+require('@babel/register');
 var app = require('../app');
 var debug = require('debug')('react-backend:server');
 var http = require('http');
