@@ -9,7 +9,7 @@ const Dashboard = () => (
     <AppBar position="static">
       <Toolbar>
         <Typography variant="title" component="h1" color="inherit">
-          Dashboard (仪表板)
+          Dashboard (用户界面)
         </Typography>
       </Toolbar>
     </AppBar>

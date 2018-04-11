@@ -14,7 +14,7 @@ class ModuleList extends Component {
       modules: [
         {
           id: 1,
-          name: 'Module 1 (第一部分)',
+          name: '把 Structure',
         },
         {
           id: 2,

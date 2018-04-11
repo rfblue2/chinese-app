@@ -14,7 +14,7 @@ import SegmentContent from './SegmentContent';
 class Module extends Component {
   state = {
     name: '',
-    selectedSegmentId: 0,
+    selectedSegmentId: '1',
     segments: [],
     redirectHome: false,
   };
@@ -26,22 +26,37 @@ class Module extends Component {
       selectedSegmentId: 1,
       segments: [
         {
-          id: 1,
-          name: 'Segment 1',
-          image_link: '/favicon.ico',
-          valid_text: ['zhong', 'center', 'middle'],
-          question_text: 'What does this mean',
+          id: '1',
+          name: 'Instructions',
+          question_text: 'Fill in the right answer in the following segments.',
         },
         {
-          id: 2,
-          name: 'Segment 2',
-          valid_text: ['yes'],
-          question_text: '学而时习之，不亦悦乎?',
+          id: '2',
+          name: 'Change of Location',
+          image_link: '/images/hamburger.gif',
+          valid_text: [
+            '丁一把汉堡包放在桌子上。', 
+            '丁一把汉堡包放在桌子上', 
+            '他把汉堡包放在桌子上。', 
+            '他把汉堡包放在桌子上'
+          ],
+          question_text: '丁一做了什么？',
         },
         {
-          id: 3,
-          name: 'Segment 3',
-          video_link: 'https://www.youtube.com/watch?v=ScMzIvxBSi4',
+          id: '3',
+          name: 'Change of Status',
+          image_link: '/images/book.gif',
+          valid_text: [
+            '张三把书关了。', 
+            '张三把书关闭了。', 
+            '他把书关了。', 
+            '他把书关闭了。', 
+            '张三把书关了', 
+            '张三把书关闭了', 
+            '他把书关了', 
+            '他把书关闭了', 
+          ],
+          question_text: '张三做了什么？',
         },
       ],
     });
@@ -82,7 +97,7 @@ class Module extends Component {
             </Typography>
           </Toolbar>
         </AppBar>
-        <Grid container spacing={8}>
+        <Grid container spacing={8} className={classes.grid}>
           <Grid item xs={3}>
             <SegmentList
               segments={this.state.segments}
@@ -109,7 +124,11 @@ Module.propTypes = {
 
 const styles = {
   root: {
+    height: "100%",
     flexGrow: 1,
+  },
+  grid: {
+    height: "100%",
   },
   flex: {
     flex: 1,
