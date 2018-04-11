@@ -12,6 +12,8 @@
     "heroku-postbuild": "cd client && yarn install && yarn run build"
   },
   "dependencies": {
+    "@babel/core": "^7.0.0-beta.42",
+    "@babel/preset-env": "^7.0.0-beta.42",
     "@babel/register": "^7.0.0-beta.42",
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
@@ -24,8 +26,6 @@
     "serve-favicon": "~2.4.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.42",
-    "@babel/preset-env": "^7.0.0-beta.42",
     "babel-eslint": "^8.2.2",
     "concurrently": "^3.5.1",
     "eslint": "^4.19.0",
