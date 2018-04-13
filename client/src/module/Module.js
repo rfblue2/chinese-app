@@ -27,7 +27,7 @@ class Module extends Component {
 
   componentDidMount() {
     // TODO make call given props.match.params.moduleId
-    if (this.props.match.params.moduleId == '1') {
+    if (this.props.match.params.moduleId === '1') {
       this.setState({
         name: `Module ${this.props.match.params.moduleId}`,
         selectedSegmentId: '1',
@@ -75,7 +75,9 @@ class Module extends Component {
   }
 
   _handleSegmentItemClick(id) {
-    this.setState({ selectedSegmentId: id });
+    this.setState({
+      selectedSegmentId: id,
+    });
   }
 
   render() {

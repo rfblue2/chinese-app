@@ -15,6 +15,15 @@ class SegmentContent extends Component {
     showFeedback: false,
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      inputProps: {text: ''}, 
+      text: '',
+      correct: false,
+      showFeedback: false
+    });
+  }
+
   handleClick() {
     if (!('valid_text' in this.props.segment)) return;
     if (this.props.segment.valid_text.includes(this.state.text)) {
@@ -82,6 +91,7 @@ class SegmentContent extends Component {
                 <TextField 
                   id="answer" 
                   type="text" 
+                  value={this.state.text}
                   inputProps={this.state.inputProps} 
                   onChange={this.onChange.bind(this)}
                   onKeyPress={this.onKeyPress.bind(this)}
