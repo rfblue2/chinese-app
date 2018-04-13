@@ -19,50 +19,59 @@ class Module extends Component {
     redirectHome: false,
   };
 
-  componentDidMount() {
-    // TODO make call given props.match.params.moduleId
-    this.setState({
-      name: `Module ${this.props.match.params.moduleId}`,
-      selectedSegmentId: 1,
-      segments: [
-        {
-          id: '1',
-          name: 'Instructions',
-          question_text: 'Fill in the right answer in the following segments.',
-        },
-        {
-          id: '2',
-          name: 'Change of Location',
-          image_link: '/images/hamburger.gif',
-          valid_text: [
-            '丁一把汉堡包放在桌子上。', 
-            '丁一把汉堡包放在桌子上', 
-            '他把汉堡包放在桌子上。', 
-            '他把汉堡包放在桌子上'
-          ],
-          question_text: '丁一做了什么？',
-        },
-        {
-          id: '3',
-          name: 'Change of Status',
-          image_link: '/images/book.gif',
-          valid_text: [
-            '张三把书关了。', 
-            '张三把书关闭了。', 
-            '他把书关了。', 
-            '他把书关闭了。', 
-            '张三把书关了', 
-            '张三把书关闭了', 
-            '他把书关了', 
-            '他把书关闭了', 
-          ],
-          question_text: '张三做了什么？',
-        },
-      ],
-    });
-
+  constructor() {
+    super();
     // bind the function but don't bind as jsx prop!
     this.handleSegmentItemClick = this._handleSegmentItemClick.bind(this);
+  }
+
+  componentDidMount() {
+    // TODO make call given props.match.params.moduleId
+    if (this.props.match.params.moduleId == '1') {
+      this.setState({
+        name: `Module ${this.props.match.params.moduleId}`,
+        selectedSegmentId: '1',
+        segments: [
+          {
+            id: '1',
+            name: 'Instructions',
+            question_text: 'Fill in the right answer in the following segments.',
+          },
+          {
+            id: '2',
+            name: 'Change of Location',
+            image_link: '/images/hamburger.gif',
+            valid_text: [
+              '丁一把汉堡包放在桌子上。', 
+              '丁一把汉堡包放在桌子上', 
+              '他把汉堡包放在桌子上。', 
+              '他把汉堡包放在桌子上'
+            ],
+            question_text: '丁一做了什么？',
+          },
+          {
+            id: '3',
+            name: 'Change of Status',
+            image_link: '/images/water.gif',
+            valid_text: [
+              '张三把水喝了。', 
+              '张三把水喝完了。', 
+              '张三把水喝了', 
+              '张三把水喝完了', 
+              '他把水喝完了。', 
+              '他把水喝了。', 
+              '他把水喝完了', 
+              '他把水喝了', 
+              '张三把水喝完。', 
+              '张三把水喝完', 
+              '他把水喝完。', 
+              '他把水喝完', 
+            ],
+            question_text: '张三做了什么？',
+          },
+        ],
+      });
+    }
   }
 
   _handleSegmentItemClick(id) {

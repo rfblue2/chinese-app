@@ -8,15 +8,30 @@ import TextField from 'material-ui/TextField';
 
 class SegmentContent extends Component {
 
-  state = { inputProps: {text: ''}, text: '' }
+  state = { 
+    inputProps: {text: ''}, 
+    text: '',
+    correct: false,
+    showFeedback: false,
+  }
 
   handleClick() {
     if (!('valid_text' in this.props.segment)) return;
-    console.log(this.state.text);
     if (this.props.segment.valid_text.includes(this.state.text)) {
-      alert("Correct!");
+      this.setState({correct: true, showFeedback: true});
     } else {
-      alert("Incorrect!");
+      this.setState({correct: false, showFeedback: true});
+    }
+  }
+
+  onKeyPress(e) {
+    if (e.key === 'Enter') {
+      if (!('valid_text' in this.props.segment)) return;
+      if (this.props.segment.valid_text.includes(this.state.text)) {
+        this.setState({correct: true, showFeedback: true});
+      } else {
+        this.setState({correct: false, showFeedback: true});
+      }
     }
   }
 
@@ -25,7 +40,14 @@ class SegmentContent extends Component {
   }
 
   render() {
-    const { classes, segment } = this.props
+    const { 
+      classes, 
+      segment,
+    } = this.props;
+    const { 
+      showFeedback,
+      correct,
+    } = this.state;
     return (
       <div className={classes.root}>
         <Card className={classes.card}>
@@ -62,15 +84,28 @@ class SegmentContent extends Component {
                   type="text" 
                   inputProps={this.state.inputProps} 
                   onChange={this.onChange.bind(this)}
+                  onKeyPress={this.onKeyPress.bind(this)}
                 />
                 : ''
             }
-          </CardContent>
+         </CardContent>
           <CardActions>
-            <Button size="small" color="primary" onClick={this.handleClick.bind(this)}>
-              Submit
-            </Button>
+            { segment.valid_text ? 
+              <Button 
+                size="small" 
+                color="primary" 
+                onClick={this.handleClick.bind(this)}>
+                    Submit
+                </Button> : ''
+            }
           </CardActions>
+          <CardContent>
+            { showFeedback ? (correct ? 
+              <Typography gutterBottom variant="subheading">Correct!</Typography> : 
+              <Typography gutterBottom variant="subheading">Try again.</Typography>) :
+               ''
+            } 
+          </CardContent>
         </Card>
       </div>
     );

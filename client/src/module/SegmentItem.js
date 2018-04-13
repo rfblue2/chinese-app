@@ -5,7 +5,7 @@ import { ListItem, ListItemText } from 'material-ui/List';
 const SegmentItem = ({ segmentItem, handleClick }) =>
   (
     <ListItem button onClick={() => handleClick(segmentItem.id)} >
-      <ListItemText inset primary={segmentItem.name} />
+      <ListItemText primary={segmentItem.name} />
     </ListItem>
   );
 

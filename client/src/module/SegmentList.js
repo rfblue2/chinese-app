@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import List, { ListItem, ListItemText } from 'material-ui/List';
+import ListSubheader from 'material-ui/List/ListSubheader';
+import List from 'material-ui/List';
 import Card, { CardContent } from 'material-ui/Card';
 import Divider from 'material-ui/Divider';
 import SegmentItem from './SegmentItem';
@@ -11,9 +12,9 @@ const SegmentList = ({ classes, handleClick, segments }) => (
     <Card className={classes.card}>
       <CardContent className={classes.cardContent}>
         <List component="nav">
-          <ListItem>
-            <ListItemText primary="Segments" />
-          </ListItem>
+          <ListSubheader>
+            Segments
+          </ListSubheader>
           { segments.map(s => (
             <div key={s.id}>
               <Divider />
